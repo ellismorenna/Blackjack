@@ -1,0 +1,127 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{projeto-ed}[2026/08/23 Projeto de Estruturas de Dados]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{babel}
+\RequirePackage{lmodern}
+\RequirePackage[a4paper,margin=2.2cm,headheight=15pt]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{hyperref}
+\RequirePackage{lastpage}
+\RequirePackage{parskip}
+\RequirePackage{pifont}
+
+\definecolor{EDNavy}{HTML}{102D4F}
+\definecolor{EDBlue}{HTML}{146C94}
+\definecolor{EDCyan}{HTML}{19A7CE}
+\definecolor{EDGold}{HTML}{D89B21}
+\definecolor{EDLight}{HTML}{EEF6FA}
+\definecolor{EDGray}{HTML}{5B6570}
+\definecolor{EDLine}{HTML}{C9D8E3}
+
+\hypersetup{colorlinks=true,linkcolor=EDBlue,urlcolor=EDBlue,pdfborder={0 0 0}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=3pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Estruturas de Dados --- 1001098}
+\rhead{Projeto da disciplina}
+\cfoot{\thepage~/~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}{\Large\bfseries\color{EDNavy}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{EDBlue}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{13pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\newcommand{\ProjetoHeader}[2]{%
+  \begin{center}
+    {\small\bfseries UNIVERSIDADE FEDERAL DE SÃO CARLOS\par}
+    \vspace{3pt}
+    {\color{EDCyan}\rule{\textwidth}{1.2pt}}\\[8pt]
+    {\LARGE\bfseries\color{EDNavy} #1\par}
+    \vspace{4pt}
+    {\large\color{EDGray} #2\par}
+    \vspace{4pt}
+    {\small\bfseries  Estruturas de Dados (1001098) --- 2026/2\par}
+  \end{center}
+  \vspace{4pt}
+}
+
+\newcommand{\InfoBox}[1]{%
+  \begin{center}
+  \fcolorbox{EDLine}{EDLight}{\parbox{0.94\textwidth}{#1}}
+  \end{center}
+}
+
+\newcommand{\Campo}[1]{\textbf{#1}:\par\noindent\rule{\textwidth}{0.4pt}}
+\newcommand{\LinhaResposta}{\par\noindent\rule{\textwidth}{0.35pt}\par}
+\newcommand{\AnswerSpace}[1]{\par\vspace{#1}\noindent\rule{\textwidth}{0.35pt}\par}
+\newcommand{\EDCheckBox}{\fbox{\rule{0pt}{1.2ex}\rule{1.2ex}{0pt}}}
+\newcommand{\NaoSeAplica}{\textit{Não se aplica.}}
+
+\newcommand{\EDCheckedBox}{%
+  \makebox[1.2em][c]{%
+    \rlap{\ding{113}}%
+    \raisebox{0.05em}{\ding{51}}%
+  }%
+}
+
+\newenvironment{EntregaChecklist}{%
+  \begin{itemize}[label=\EDCheckedBox,leftmargin=2em]
+}{\end{itemize}}
+
+\newcommand{\TabelaEquipeCompleta}{%
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{0.8cm}p{1.5cm} X X}
+    \toprule
+    & \textbf{RA} & \textbf{Nome completo} & \textbf{Responsabilidades no projeto} \\
+    \midrule
+    1 & 858173 & Ellis Morenna Viana Silva & Desenvolvimento individual completo (Modelagem, TADs, Lógica em C e Interface Raylib) \\
+    
+    \bottomrule
+  \end{tabularx}
+}
+
+\newcommand{\DeclaracaoIA}{%
+  \section{Declaração de uso de IA generativa}
+  Esta declaração é obrigatória. Marque uma opção e forneça informações suficientes para que o uso seja compreendido e auditado. A equipe permanece responsável por todo o conteúdo, código, testes, referências e decisões entregues.
+
+  \CheckBox[checked=false]{}\ \textbf{Não utilizamos IA generativa} na elaboração desta fase.\\[5pt]
+\CheckBox[checked=true]{}\ \textbf{Utilizamos IA generativa}, conforme registro abaixo.
+
+  \begin{tabularx}{\textwidth}{>{\bfseries}p{5cm} X}
+    \toprule
+    Ferramenta(s) &  \footnotesize Ex.: ChatGPT, Gemini, etc.\\\midrule
+    Finalidade do uso & \footnotesize Ex.: ideação, explicação, revisão textual, geração ou depuração de código, criação de testes, imagens. \\\midrule
+    Partes afetadas & \footnotesize Ex.: Diagramas, conceitos, etc. \\\midrule
+    Como a saída foi verificada & \footnotesize Ex.: verificação manual por A\\\midrule
+    Erros encontrados e correções realizadas & \footnotesize Ex.: organização do diagrama\\\midrule
+    Registro complementar & \footnotesize Link ou anexo com prompts e respostas relevantes. \\
+    \bottomrule
+
+  \end{tabularx}
+  
+  \textit{A inteligência artificial generativa (Gemini e ChatGPT) foi utilizada nesta fase como ferramenta de apoio para a revisão textual e gramatical do relatório, visando garantir a clareza, a coesão e a fluidez da escrita. Além disso, as ferramentas auxiliaram na elaboração, estruturação e depuração do código LaTeX empregado na geração dos diagramas e fluxogramas do documento, mantendo-se todo o conteúdo técnico, análises e decisões sob total responsabilidade e autoria dos integrantes do grupo.}
+
+  \vspace{20pt}
+  \textbf{Declaração de responsabilidade.}\par
+  Confirmamos que revisamos criticamente os materiais produzidos com apoio de IA, compreendemos o código e as decisões apresentadas e assumimos responsabilidade pela versão entregue.
+
+  \vspace{10pt}
+  Data: 04/11/2026 
+  Representante do grupo: Ellis Morenna Viana Silva 
+}
+
